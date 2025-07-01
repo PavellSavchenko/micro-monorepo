@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{isEdit?'Edit User':'Create User'}}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Username</mat-label>
+      <input data-cy="form-name" matInput formControlName="name" placeholder="Enter username" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input data-cy="form-email" matInput formControlName="email" placeholder="Enter email" />
+    </mat-form-field>
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button data-cy="form-submit" (click)="createUser()" color="primary" type="submit" [disabled]="form.invalid">
+    {{isEdit?'Edit User':'Create User'}}
+  </button>
+  <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

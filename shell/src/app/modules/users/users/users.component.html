@@ -1,0 +1,19 @@
+<mat-spinner diameter="40" *ngIf="loading$ | async"></mat-spinner>
+<div>
+  <mat-card *ngFor="let item of users$ | async; index as i; trackBy: trackById" data-cy="user-row" class="example-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{item.email}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions >
+      <button [disabled]="loading$ | async" class="button-action" mat-stroked-button (click)="updateUserHandler(item)">EDIT</button>
+      <button [disabled]="loading$ | async" class="button-action" mat-stroked-button (click)="deleteUserHandler(item)">DELETE</button>
+    </mat-card-actions>
+  </mat-card>
+  <button [disabled]="loading$ | async" data-cy="add-user-button" mat-stroked-button (click)="addUser()">ADD USER</button>
+</div>
