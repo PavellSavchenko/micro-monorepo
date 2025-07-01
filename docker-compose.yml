@@ -1,0 +1,21 @@
+services:
+  shell:
+    build: .
+    working_dir: /app/shell
+    ports:
+      - "4200:4200"
+    command: ng serve shell --host 0.0.0.0 --port 4200
+
+  remote1:
+    build: .
+    working_dir: /app/remote1
+    ports:
+      - "4201:4201"
+    command: ng serve remote1 --host 0.0.0.0 --port 4201
+
+  remote2:
+    build: .
+    working_dir: /app/remote2
+    ports:
+      - "4202:4202"
+    command: ng serve remote2 --host 0.0.0.0 --port 4202
