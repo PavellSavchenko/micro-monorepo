@@ -1,0 +1,21 @@
+<p>user works!</p>
+
+<mat-spinner diameter="40" *ngIf="store.loading()"></mat-spinner>
+<div>
+  <mat-card *ngFor="let item of store.users()" class="example-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{item.email}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions >
+      <button [disabled]="store.loading()" class="button-action" (click)="handleUpdate(item)" mat-stroked-button >EDIT</button>
+      <button [disabled]="store.loading()" class="button-action" (click)="deleteUserHandler(item)" mat-stroked-button >DELETE</button>
+    </mat-card-actions>
+  </mat-card>
+  <button [disabled]="store.loading()" (click)="addUser()" mat-stroked-button >ADD USER</button>
+</div>
