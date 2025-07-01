@@ -1,0 +1,8 @@
+<p>Remote app 2</p>
+<ul>
+  @for (log of logs; track log) {
+    <li>{{ log }}</li>
+  } @empty {
+    <li>There are no logs.</li>
+  }
+</ul>
