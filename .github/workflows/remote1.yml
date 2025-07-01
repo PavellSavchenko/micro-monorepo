@@ -1,25 +1,38 @@
-name: Remote1 CI
+name: Remote 1 CI
 
 on:
   push:
     branches: [master]
     paths:
       - 'remote1/**'
+      - 'shared-lib/**'
   pull_request:
     branches: [master]
     paths:
       - 'remote1/**'
+      - 'shared-lib/**'
+  workflow_dispatch:  # ← это добавляет кнопку "Run workflow"
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: remote1
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Build remote1
+        run: ng build
+        working-directory: remote1
+

@@ -41,8 +41,8 @@
 						],
 						"main": "src/main.ts",
 						"outputPath": "dist/remote2",
-						"index": "src\\index.html",
-						"extraWebpackConfig": "webpack.config.js",
+            "index": "src/index.html",
+            "extraWebpackConfig": "webpack.config.js",
 						"commonChunk": false
 					},
 					"configurations": {
