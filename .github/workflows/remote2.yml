@@ -1,0 +1,25 @@
+name: Remote2 CI
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'remote2/**'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'remote2/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: remote2
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
