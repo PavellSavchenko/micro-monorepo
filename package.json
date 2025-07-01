@@ -1,0 +1,10 @@
+{
+  "name": "micro-monorepo",
+  "private": true,
+  "workspaces": [
+    "shell",
+    "remote1",
+    "remote2",
+    "shared-lib"
+  ]
+}
