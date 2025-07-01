@@ -7,7 +7,6 @@ import {addUser, deleteUser, loadUsers, updateUser} from '../../../store/users/u
 import {MatDialog} from '@angular/material/dialog';
 import {UserModalComponent} from './user-modal/user-modal.component';
 import { EventBusService } from '@shared/event-bus';
-import {SocketService} from '../../../services/socket.service';
 
 @Component({
   selector: 'app-users',
@@ -18,7 +17,7 @@ export class UsersComponent implements OnInit{
   users$: Observable<User[]> | undefined
   usersCount = 0
   loading$: Observable<boolean> | undefined
-  constructor(private store: Store, private dialog: MatDialog, private bus: EventBusService, private socketService: SocketService,) {
+  constructor(private store: Store, private dialog: MatDialog, private bus: EventBusService) {
   }
 
   ngOnInit() {
@@ -29,9 +28,6 @@ export class UsersComponent implements OnInit{
     })
     this.loading$ = this.store.select(selectUsersLoading)
     this.store.dispatch(loadUsers())
-    this.socketService.onMessage((message)=>{
-      console.log(message)
-    })
   }
 
   trackById(index: number, user: User) {
